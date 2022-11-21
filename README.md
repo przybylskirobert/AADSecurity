@@ -46,13 +46,9 @@ This is my place where I'm putting all the scripts and  files regarding Azure Ac
 	$Credential = Get-Credential
 	$Credential | Export-Clixml .\AppSecret.xml
 
-7. Run the follwing command to start data gathering:
-		.\Get-AADAudit.ps1
-		-AuditPath 'X:\temp'
-		-CliXMLPath 'Path_to_your_xml_file_with_thumbprint'
-		-SecretCliXMLPath 'Path_to_your_xml_file_with_appsecret'
-		-ApplicationID 'Your_App_ID'
-		-TenantID 'Your_Tenant_ID'
+7.Run the follwing command to start data gathering:
+
+	.\Get-AADAudit.ps1 -AuditPath 'X:\temp' -CliXMLPath 'Path_to_your_xml_file_with_thumbprint' -SecretCliXMLPath 'Path_to_your_xml_file_with_appsecret' -ApplicationID 'Your_App_ID' -TenantID 'Your_Tenant_ID'
 
 There are additionall switched to be used during the script run:
 
