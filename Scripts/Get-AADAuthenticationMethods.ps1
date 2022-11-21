@@ -46,7 +46,7 @@ param (
     [Parameter(Position = 1)]
     [string] $OutputPath,      
     [Parameter(Position = 2)]
-    [string] $SecretCliXMLPath = "C:\Users\tauze\OneDrive\04_Repos\Projekty_prywatne\Private\AADSecurity\AppSecret.xml",
+    [string] $SecretCliXMLPath = ".\YourPathTo\AppSecret.xml",
     [Parameter(Position = 3)]
     [string] $ApplicationID,
     [Parameter(Position = 4)]
