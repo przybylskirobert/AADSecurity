@@ -1,4 +1,3 @@
-#    .\Get-AADAudit.ps1 -AuditPath 'X:\temp' -IncludeRAW -CliXMLPath 'C:\Users\tauze\OneDrive\04_Repos\Projekty_prywatne\Private\AADSecurity\CertificateThumbprint.xml' -SecretCliXMLPath "C:\Users\tauze\OneDrive\04_Repos\Projekty_prywatne\Private\AADSecurity\AppSecret.xml" -ApplicationID 'bf43dc83-2fb1-4cd6-80a0-fb34696379c6' -TenantID '56b759c4-70fd-4f95-8a65-88d5ca311666'
 <#
     .NOTES
     All rigts reserved to 
