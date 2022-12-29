@@ -83,6 +83,10 @@ if ($rawArray.Length -ne 0) {
     $fileName = $FileName + "_" + $date
     Write-Host "Exporting entries to file: '$filename.csv'" -ForegroundColor Yellow
     $results | export-csv -NoClobber -NoTypeInformation -append -path "$OutputPath\$middlePath\$fileName.csv"
+    if ($VerbosePreference -eq "continue") {
+        Write-Verbose "Results array:"
+        $results
+    }
 }
 
 else {

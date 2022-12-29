@@ -157,6 +157,7 @@ $uriArray = @(
     'policies/crossTenantAccessPolicy/partners',
     'policies/crossTenantAccessPolicy/default',
     'policies/adminConsentRequestPolicy'
+    '/roleManagement/directory/roleEligibilityScheduleInstances'
 )  
 
 try {

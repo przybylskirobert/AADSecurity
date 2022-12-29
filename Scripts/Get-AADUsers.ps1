@@ -69,7 +69,8 @@ Write-Verbose "TenantDomainName: '$TenantDomainName'"
 Write-Host "Connecting to MS Graph " -ForegroundColor Yellow
 Connect-MgGraph -CertificateThumbprint $certificateThumbprint -ClientId $ApplicationID -TenantId $TenantID | Out-Null
 
-$rawArray = Get-MgUser -All 
+$rawArray = Get-MgUser -All
+$rawSignInArray = Get-MgAuditLogSignIn
 $results = @()
 $dateChecked = get-date -UFormat %d/%m/%Y
 Write-Host "Found '$($rawArray.Count)' entries under '$TenantDomainName' tenant" -ForegroundColor Green
@@ -83,6 +84,7 @@ if ($rawArray.Length -ne 0) {
             DisplayName       = $user.DisplayName
             UserPrincipalName = $user.UserPrincipalName
             UserType          = $user.UserType
+            CountryOrRegion   = ($rawSignInArray | where-Object { $_.UserID -eq $user.id }).Location.CountryOrRegion | Select-Object -first 1
         }
         $results += $entry
     }
@@ -95,6 +97,10 @@ if ($rawArray.Length -ne 0) {
     $fileName = $FileName + "_" + $date
     Write-Host "Exporting entries to file: '$filename.csv'" -ForegroundColor Yellow
     $results | export-csv -NoClobber -NoTypeInformation -append -path "$OutputPath\$middlePath\$fileName.csv"
+    if ($VerbosePreference -eq "continue") {
+        Write-Verbose "Results array:"
+        $results
+    }
 }
 else {
     Write-Host "No entries found, no file to be created."  -ForegroundColor Yellow
