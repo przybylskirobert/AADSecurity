@@ -25,6 +25,7 @@ This is my place where I'm putting all the scripts and  files regarding Azure Ac
 - IdentityRiskyServicePrincipal.Read.All
 - IdentityRiskyUser.Read.All
 - Policy.Read.All
+- RoleManagement.Read.All
 - RoleManagement.Read.Directory
 - SecurityEvents.Read.All
 - ServicePrincipalEndpoint.Read.All
