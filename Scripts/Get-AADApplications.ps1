@@ -9,7 +9,7 @@
      
    
     .Example
-    .\Get-AADApplications.ps1 -Filename "AAD_Applications" -OutputPath c:\temp -CertificateThumbprint "XXX" -ApplicationId "XXX" -TenantID "XXXX" -TenantDomainName "XXX" -Verbose
+    .\Get-AADApplications.ps1 -Filename "AAD_Applications" -OutputPath c:\temp -SecretCliXMLPath "XXX" -CertificateThumbprint "XXX" -ApplicationId "XXX" -TenantID "XXXX" -TenantDomainName "XXX" -Verbose
     VERBOSE: FileName: 'AAD_Applications'
     VERBOSE: OutputPath: 'X:\temp\AAD_Audit\MVP Tenant'
     VERBOSE: CertificateThumbprint: 'XXXX'
@@ -28,7 +28,7 @@
     Exporting entries to file: 'AAD_Applications_11_21_2022.csv'
     
     .Example
-    .\Get-AADApplications.ps1 -Filename "AAD_Applications" -OutputPath c:\temp -CertificateThumbprint "XXX" -ApplicationId "XXX" -TenantID "XXXX" -TenantDomainName "XXX"
+    .\Get-AADApplications.ps1 -Filename "AAD_Applications" -OutputPath c:\temp -SecretCliXMLPath "XXX"-CertificateThumbprint "XXX" -ApplicationId "XXX" -TenantID "XXXX" -TenantDomainName "XXX"
     Connecting to MS Graph
     Found '7' entries under 'mvp.azureblog.pl' tenant
     Exporting entries to file: 'AAD_Applications_11_21_2022.csv'    
@@ -47,11 +47,14 @@ param (
     [Parameter(Position = 4)]
     [string] $TenantID,
     [Parameter(Position = 5)]
-    [string] $TenantDomainName
+    [string] $TenantDomainName,
+    [Parameter(Position = 6)]
+    [string] $SecretCliXMLPath
 )
 
 Write-Verbose "FileName: '$FileName'"
 Write-Verbose "OutputPath: '$OutputPath'"
+Write-Verbose "SecretCliXMLPath: '$SecretCliXMLPath'"
 Write-Verbose "CertificateThumbprint: '$CertificateThumbprint'"
 Write-Verbose "ApplicationId: '$ApplicationId'"
 Write-Verbose "TenantID: '$TenantID'"

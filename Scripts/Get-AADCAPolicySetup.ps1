@@ -8,7 +8,7 @@ robert(at)azureblog.pl
 .Synopsis
 
 .Example
-.\Get-AADCAPolicySetup.ps1 -Filename "AAD_ConditionalAccessPolicySetup" -OutputPath c:\temp -CertificateThumbprint "XXX" -ApplicationId "XXX" -TenantID "XXXX" -TenantDomainName "XXX" -Verbose
+.\Get-AADCAPolicySetup.ps1 -Filename "AAD_ConditionalAccessPolicySetup" -OutputPath c:\temp -SecretCliXMLPath "XXX" -CertificateThumbprint "XXX" -ApplicationId "XXX" -TenantID "XXXX" -TenantDomainName "XXX" -Verbose
 VERBOSE: FileName: 'AAD_ConditionalAccessPolicySetup'
 VERBOSE: OutputPath: 'X:\temp\AAD_Audit\MVP Tenant'
 VERBOSE: CertificateThumbprint: 'XXXX'
@@ -26,7 +26,7 @@ VERBOSE: Working on 'Block Countires' policy
 VERBOSE: Working on 'test' policy
 Exporting entries to file: 'AAD_ConditionalAccessPolicySetup_11_21_2022.csv'
 .Example
-.\Get-AADCAPolicySetup.ps1 -Filename "AAD_ConditionalAccessPolicySetup" -OutputPath c:\temp -CertificateThumbprint "XXX" -ApplicationId "XXX" -TenantID "XXXX" -TenantDomainName "XXX"
+.\Get-AADCAPolicySetup.ps1 -Filename "AAD_ConditionalAccessPolicySetup" -OutputPath c:\temp -SecretCliXMLPath "XXX" -CertificateThumbprint "XXX" -ApplicationId "XXX" -TenantID "XXXX" -TenantDomainName "XXX"
 Connecting to MS Graph
 Found '7' entries under 'mvp.azureblog.pl' tenant
 Exporting entries to file: 'AAD_ConditionalAccessPolicySetup_11_21_2022.csv'
@@ -46,11 +46,14 @@ param (
     [Parameter(Position = 4)]
     [string] $TenantID,
     [Parameter(Position = 5)]
-    [string] $TenantDomainName
+    [string] $TenantDomainName,
+    [Parameter(Position = 6)]
+    [string] $SecretCliXMLPath
 )
 
 Write-Verbose "FileName: '$FileName'"
 Write-Verbose "OutputPath: '$OutputPath'"
+Write-Verbose "SecretCliXMLPath: '$SecretCliXMLPath'"
 Write-Verbose "CertificateThumbprint: '$CertificateThumbprint'"
 Write-Verbose "ApplicationId: '$ApplicationId'"
 Write-Verbose "TenantID: '$TenantID'"

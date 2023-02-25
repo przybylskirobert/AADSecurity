@@ -11,7 +11,7 @@
     ID 'c46dce14-3cf8-4727-96d2-7040604037e0' is a Security Administrator role ID.
     
     .Example
-    .\Get-AADPotentialBreakGlassSetup.ps1 -Filename "AAD_PotentialBreakGlassSetup" -OutputPath c:\temp -CertificateThumbprint "XXX" -ApplicationId "XXX" -TenantID "XXXX" -TenantDomainName "XXX" -Verbose
+    .\Get-AADPotentialBreakGlassSetup.ps1 -Filename "AAD_PotentialBreakGlassSetup" -OutputPath c:\temp -SecretCliXMLPath "XXX" -CertificateThumbprint "XXX" -ApplicationId "XXX" -TenantID "XXXX" -TenantDomainName "XXX" -Verbose
     VERBOSE: FileName: 'AAD_PotentialBreakGlassSetup'
     VERBOSE: DirectoryRoleId: 'b54c6a04-043c-4769-821b-86576a6bca34'
     VERBOSE: OutputPath: 'X:\temp\AAD_Audit\MVP Tenant'
@@ -26,7 +26,7 @@
     Fount '1' entries
     Exporting entries to file: 'AAD_PotentialBreakGlassSetup_11_21_2022.csv'
     .Example
-    .\Get-AADPotentialBreakGlassSetup.ps1 -Filename "AAD_PotentialBreakGlassSetup" -OutputPath c:\temp -CertificateThumbprint "XXX" -ApplicationId "XXX" -TenantID "XXXX" -TenantDomainName "XXX"
+    .\Get-AADPotentialBreakGlassSetup.ps1 -Filename "AAD_PotentialBreakGlassSetup" -OutputPath c:\temp  -SecretCliXMLPath "XXX" -CertificateThumbprint "XXX" -ApplicationId "XXX" -TenantID "XXXX" -TenantDomainName "XXX"
     Connecting to MS Graph
     Fount '1' entries
     Exporting entries to file: 'AAD_PotentialBreakGlassSetup_11_21_2022.csv'
@@ -37,24 +37,26 @@
 
 param (
     [Parameter(Position = 0)]
-    [string] $DirectoryRoleId = 'b54c6a04-043c-4769-821b-86576a6bca34',
-    [Parameter(Position = 1)]
     [string] $FileName = "AAD_PotentialBreakGlassSetup",
-    [Parameter(Position = 2)]
+    [Parameter(Position = 1)]
     [string] $OutputPath,
-    [Parameter(Position = 3)]
+    [Parameter(Position = 2)]
     [string] $CertificateThumbprint,
-    [Parameter(Position = 4)]
+    [Parameter(Position = 3)]
     [string] $ApplicationId,
-    [Parameter(Position = 5)]
+    [Parameter(Position = 4)]
     [string] $TenantID,
+    [Parameter(Position = 5)]
+    [string] $TenantDomainName,
     [Parameter(Position = 6)]
-    [string] $TenantDomainName
+    [string] $SecretCliXMLPath,
+    [Parameter(Position = 7)]
+    [string] $DirectoryRoleId = 'b54c6a04-043c-4769-821b-86576a6bca34'
 )
 
 Write-Verbose "FileName: '$FileName'"
-Write-Verbose "DirectoryRoleId: '$DirectoryRoleId'"  
 Write-Verbose "OutputPath: '$OutputPath'"
+Write-Verbose "SecretCliXMLPath: '$SecretCliXMLPath'"
 Write-Verbose "CertificateThumbprint: '$CertificateThumbprint'"
 Write-Verbose "ApplicationId: '$ApplicationId'"
 Write-Verbose "TenantID: '$TenantID'"

@@ -8,7 +8,7 @@
     .Synopsis
     
     .Example
-    .\Get-AADRiskDetection.ps1 -Filename "AAD_RiskDetection" -OutputPath c:\temp -CertificateThumbprint "XXX" -ApplicationId "XXX" -TenantID "XXXX" -TenantDomainName "XXX" -Verbose
+    .\Get-AADRiskDetection.ps1 -Filename "AAD_RiskDetection" -OutputPath c:\temp -SecretCliXMLPath "XXX" -CertificateThumbprint "XXX" -ApplicationId "XXX" -TenantID "XXXX" -TenantDomainName "XXX" -Verbose
     VERBOSE: FileName: 'AAD_RiskDetection'
     VERBOSE: OutputPath: 'X:\temp\AAD_Audit\MVP Tenant'
     VERBOSE: CertificateThumbprint: 'XXXX'
@@ -21,7 +21,7 @@
     VERBOSE: Working on 'XXXX'
     Exporting entries to file: 'AAD_RiskDetection_11_21_2022.csv'
     .Example
-    .\Get-AADRiskDetection.ps1 -Filename "AAD_RiskDetection" -OutputPath c:\temp -CertificateThumbprint "XXX" -ApplicationId "XXX" -TenantID "XXXX" -TenantDomainName "XXX"
+    .\Get-AADRiskDetection.ps1 -Filename "AAD_RiskDetection" -OutputPath c:\temp -SecretCliXMLPath "XXX" -CertificateThumbprint "XXX" -ApplicationId "XXX" -TenantID "XXXX" -TenantDomainName "XXX"
     Connecting to MS Graph
     Found '2' entries under 'mvp.azureblog.pl' tenant
     Exporting entries to file: 'AAD_RiskDetection_11_21_2022.csv'
@@ -32,9 +32,9 @@
 
 param (
     [Parameter(Position = 0)]
-    [string] $OutputPath,
-    [Parameter(Position = 1)]
     [string] $FileName = 'AAD_RiskDetection',
+    [Parameter(Position = 1)]
+    [string] $OutputPath,
     [Parameter(Position = 2)]
     [string] $CertificateThumbprint,
     [Parameter(Position = 3)]
@@ -42,11 +42,14 @@ param (
     [Parameter(Position = 4)]
     [string] $TenantID,
     [Parameter(Position = 5)]
-    [string] $TenantDomainName
+    [string] $TenantDomainName,
+    [Parameter(Position = 6)]
+    [string] $SecretCliXMLPath
 )
 
 Write-Verbose "FileName: '$FileName'"
 Write-Verbose "OutputPath: '$OutputPath'"
+Write-Verbose "SecretCliXMLPath: '$SecretCliXMLPath'"
 Write-Verbose "CertificateThumbprint: '$CertificateThumbprint'"
 Write-Verbose "ApplicationId: '$ApplicationId'"
 Write-Verbose "TenantID: '$TenantID'"

@@ -11,6 +11,7 @@
     .\Get-AADAccessReviews.ps1 -Filename "AAD_AccessReviews" -OutputPath c:\temp -CertificateThumbprint "XXX" -ApplicationId "XXX" -TenantID "XXXX" -TenantDomainName "XXX" -Verbose
     VERBOSE: FileName: 'AAD_AccessReviews'
     VERBOSE: OutputPath: 'X:\temp\AAD_Audit\MVP Tenant'
+    VERBOSE: SecretCliXMLPath: 'XXXX\AppSecret.xml'
     VERBOSE: CertificateThumbprint: 'XXXX'
     VERBOSE: ApplicationId: 'XXXX'
     VERBOSE: TenantID: 'XXXX'
@@ -47,11 +48,14 @@ param (
     [Parameter(Position = 4)]
     [string] $TenantID,
     [Parameter(Position = 5)]
-    [string] $TenantDomainName
+    [string] $TenantDomainName,
+    [Parameter(Position = 6)]
+    [string] $SecretCliXMLPath
 )
 
 Write-Verbose "FileName: '$FileName'"
 Write-Verbose "OutputPath: '$OutputPath'"
+Write-Verbose "SecretCliXMLPath: '$SecretCliXMLPath'"
 Write-Verbose "CertificateThumbprint: '$CertificateThumbprint'"
 Write-Verbose "ApplicationId: '$ApplicationId'"
 Write-Verbose "TenantID: '$TenantID'"

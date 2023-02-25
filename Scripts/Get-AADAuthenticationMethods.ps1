@@ -8,7 +8,7 @@
     .Synopsis   
    
     .Example
-    .\Get-AADAuthenticationMethods.ps1 -Filename "AAD_AuthenticationMethods" -OutputPath c:\temp -CertificateThumbprint "XXX" -ApplicationId "XXX" -TenantID "XXXX" -TenantDomainName "XXX"
+    .\Get-AADAuthenticationMethods.ps1 -Filename "AAD_AuthenticationMethods" -OutputPath c:\temp -SecretCliXMLPath "XXX" -CertificateThumbprint "XXX" -ApplicationId "XXX" -TenantID "XXXX" -TenantDomainName "XXX"
     VERBOSE: FileName: 'AAD_AuthenticationMethods'
     VERBOSE: OutputPath: 'X:\temp\AAD_Audit\MVP Tenant'
     VERBOSE: SecretCliXMLPath: 'XXXX\AppSecret.xml'
@@ -32,7 +32,7 @@
     Exporting entries to file: 'AAD_AuthenticationMethods_11_21_2022.csv'
     
     .Example
-    .\Get-AADAuthenticationMethods.ps1 -Filename "AAD_AuthenticationMethods" -OutputPath c:\temp -CertificateThumbprint "XXX" -ApplicationId "XXX" -TenantID "XXXX" -TenantDomainName "XXX"
+    .\Get-AADAuthenticationMethods.ps1 -Filename "AAD_AuthenticationMethods" -OutputPath c:\temp -SecretCliXMLPath "XXX" -CertificateThumbprint "XXX" -ApplicationId "XXX" -TenantID "XXXX" -TenantDomainName "XXX"
     Working on URI 'https://graph.microsoft.com/v1.0/authenticationMethodsPolicy'
     Found '5' entries
     Exporting entries to file: 'AAD_AuthenticationMethods_11_21_2022.csv'
@@ -44,19 +44,20 @@ param (
     [Parameter(Position = 0)]
     [string] $FileName = "AAD_AuthenticationMethods",
     [Parameter(Position = 1)]
-    [string] $OutputPath,      
+    [string] $OutputPath,
     [Parameter(Position = 2)]
-    [string] $SecretCliXMLPath = ".\YourPathTo\AppSecret.xml",
-    [Parameter(Position = 3)]
-    [string] $ApplicationID,
-    [Parameter(Position = 4)]
-    [string] $TenantDomainName,
-    [Parameter(Position = 5)]
-    [string] $Uri = 'https://graph.microsoft.com/v1.0/authenticationMethodsPolicy', 
-    [Parameter(Position = 6)]
     [string] $CertificateThumbprint,
+    [Parameter(Position = 3)]
+    [string] $ApplicationId,
+    [Parameter(Position = 4)]
+    [string] $TenantID,
+    [Parameter(Position = 5)]
+    [string] $TenantDomainName,
+    [Parameter(Position = 6)]
+    [string] $SecretCliXMLPath,
     [Parameter(Position = 7)]
-    [string] $TenantID
+    [string] $Uri = 'https://graph.microsoft.com/v1.0/authenticationMethodsPolicy'
+
 )
 
 Write-Verbose "FileName: '$FileName'"
